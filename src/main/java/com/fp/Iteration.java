@@ -13,6 +13,7 @@ public class Iteration {
         iteration.oldWay();
         iteration.consumer();
         iteration.lambda();
+        iteration.methodReference();
     }
 
     //Old Way
@@ -32,9 +33,14 @@ public class Iteration {
             }
         });
     }
-    
+
     public void lambda(){
         System.out.println("---lambda---");
-        friends.forEach((final String name) -> System.out.println(name));
+        friends.forEach( name -> System.out.println(name));
+    }
+
+    public void methodReference(){
+        System.out.println("---methodReference---");
+        friends.forEach(System.out::println);
     }
 }

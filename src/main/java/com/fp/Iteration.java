@@ -2,6 +2,7 @@ package com.fp;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.function.Consumer;
 
 public class Iteration {
@@ -14,6 +15,7 @@ public class Iteration {
         iteration.consumer();
         iteration.lambda();
         iteration.methodReference();
+        iteration.transform();
     }
 
     //Old Way
@@ -42,5 +44,12 @@ public class Iteration {
     public void methodReference(){
         System.out.println("---methodReference---");
         friends.forEach(System.out::println);
+    }
+    
+     public void transform(){
+        System.out.println("---transform Upper Case---");
+        friends.stream()
+                .map(name -> name.toUpperCase(Locale.ROOT))
+                .forEach(System.out::println);
     }
 }

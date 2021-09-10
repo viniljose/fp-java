@@ -12,6 +12,7 @@ public class Iteration {
         Iteration iteration = new Iteration();
         iteration.oldWay();
         iteration.consumer();
+        iteration.lambda();
     }
 
     //Old Way
@@ -30,5 +31,10 @@ public class Iteration {
                 System.out.println(name);
             }
         });
+    }
+    
+    public void lambda(){
+        System.out.println("---lambda---");
+        friends.forEach((final String name) -> System.out.println(name));
     }
 }

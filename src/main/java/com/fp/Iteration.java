@@ -16,6 +16,7 @@ public class Iteration {
         iteration.lambda();
         iteration.methodReference();
         iteration.transform();
+        iteration.transformLength();
     }
 
     //Old Way
@@ -50,6 +51,13 @@ public class Iteration {
         System.out.println("---transform Upper Case---");
         friends.stream()
                 .map(name -> name.toUpperCase(Locale.ROOT))
+                .forEach(System.out::println);
+    }
+    
+    public void transformLength(){
+        System.out.println("---transform Length---");
+        friends.stream()
+                .map(name ->name.length())
                 .forEach(System.out::println);
     }
 }

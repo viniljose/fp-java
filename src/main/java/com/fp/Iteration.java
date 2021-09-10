@@ -4,11 +4,18 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class Iteration {
     final List<String> friends =
             Arrays.asList("Brian", "Nate", "Neal", "Raju", "Sara", "Scott");
+    
+    final List<String> relatives =
+            Arrays.asList("Murphy", "Kate", "Ron", "Lionel", "Rob", "Bob");
+
+    final List<String> colleagues =
+            Arrays.asList("Shanon", "Rocky", "Lious", "Trent", "Mike", "Ravi");
     
     public static void main(String[] args) {
         Iteration iteration = new Iteration();
@@ -19,6 +26,7 @@ public class Iteration {
         iteration.transform();
         iteration.transformLength();
         iteration.startWithN();
+        iteration.lambdaReuse();
     }
 
     //Old Way
@@ -69,5 +77,23 @@ public class Iteration {
                 .filter(name ->name.startsWith("N"))
                 .collect(Collectors.toList());
         System.out.println("Found "+startsWithN.size()+" elements");
+    }
+    
+    public void lambdaReuse(){
+        final Predicate<String > startsWithR = name -> name.startsWith("R");
+        final long countFriends = friends.stream()
+                .filter(startsWithR)
+                .count();
+        System.out.println("Friends name starts with R " + countFriends);
+
+        final long countRelatives = relatives.stream()
+                .filter(startsWithR)
+                .count();
+        System.out.println("Relatives name starts with R " + countRelatives);
+
+        final long countColleagues = colleagues.stream()
+                .filter(startsWithR)
+                .count();
+        System.out.println("Colleagues name starts with R " + countColleagues);
     }
 }

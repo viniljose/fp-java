@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 public class Iteration {
     final List<String> friends =
@@ -17,6 +18,7 @@ public class Iteration {
         iteration.methodReference();
         iteration.transform();
         iteration.transformLength();
+        iteration.startWithN();
     }
 
     //Old Way
@@ -59,5 +61,13 @@ public class Iteration {
         friends.stream()
                 .map(name ->name.length())
                 .forEach(System.out::println);
+    }
+    
+    public void startWithN(){
+        System.out.println("---elements starting with N---");
+        final List<String > startsWithN = friends.stream()
+                .filter(name ->name.startsWith("N"))
+                .collect(Collectors.toList());
+        System.out.println("Found "+startsWithN.size()+" elements");
     }
 }

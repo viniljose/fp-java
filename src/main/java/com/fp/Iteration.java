@@ -28,6 +28,7 @@ public class Iteration {
         iteration.startWithN();
         iteration.lambdaReuse();
         iteration.closures();
+        iteration.closuresSimple();
     }
 
     //Old Way
@@ -106,5 +107,12 @@ public class Iteration {
                 };
         final long countFriendsWithR = friends.stream().filter(startsWithLetter.apply("R")).count();
         System.out.println("Friends name starts with R " + countFriendsWithR);
+    }
+    
+    public void closuresSimple(){
+        final Function<String,Predicate<String>> startsWithLetter =
+                letter -> name -> name.startsWith(letter);
+        final long countFriendsWithB = friends.stream().filter(startsWithLetter.apply("B")).count();
+        System.out.println("Friends name starts with B " + countFriendsWithB);
     }
 }

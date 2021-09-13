@@ -27,6 +27,7 @@ public class Iteration {
         iteration.transformLength();
         iteration.startWithN();
         iteration.lambdaReuse();
+        iteration.closures();
     }
 
     //Old Way
@@ -95,5 +96,15 @@ public class Iteration {
                 .filter(startsWithR)
                 .count();
         System.out.println("Colleagues name starts with R " + countColleagues);
+    }
+    
+    public void closures(){
+        final Function<String,Predicate<String>> startsWithLetter =
+                (String letter) -> {
+            Predicate<String> checkStarts = (String name) ->name.startsWith(letter);
+            return checkStarts;
+                };
+        final long countFriendsWithR = friends.stream().filter(startsWithLetter.apply("R")).count();
+        System.out.println("Friends name starts with R " + countFriendsWithR);
     }
 }

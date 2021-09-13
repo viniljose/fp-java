@@ -3,7 +3,9 @@ package com.fp;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
+import java.util.Optional;
 import java.util.function.Consumer;
+import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
@@ -29,6 +31,8 @@ public class Iteration {
         iteration.lambdaReuse();
         iteration.closures();
         iteration.closuresSimple();
+        iteration.pickUpName("R");
+        iteration.pickUpName("P");
     }
 
     //Old Way
@@ -114,5 +118,12 @@ public class Iteration {
                 letter -> name -> name.startsWith(letter);
         final long countFriendsWithB = friends.stream().filter(startsWithLetter.apply("B")).count();
         System.out.println("Friends name starts with B " + countFriendsWithB);
+    }
+    
+     public void pickUpName(final String startingLetter){
+        final Optional<String > found = friends.stream()
+                                                .filter(name -> name.startsWith(startingLetter))
+                                                .findFirst();
+        System.out.println("---->"+found.orElse("No name found"));
     }
 }

@@ -35,6 +35,7 @@ public class Iteration {
         iteration.pickUpName("P");
         iteration.totalChars();
         iteration.longest();
+        iteration.joining();
     }
 
     //Old Way
@@ -141,4 +142,5 @@ public class Iteration {
                 .reduce((name1,name2) -> name1.length()>= name2.length()?name1:name2);
         longest.ifPresent(name -> System.out.println("longest name is "+name));
     }
+    
 }

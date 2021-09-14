@@ -34,6 +34,7 @@ public class Iteration {
         iteration.pickUpName("R");
         iteration.pickUpName("P");
         iteration.totalChars();
+        iteration.longest();
     }
 
     //Old Way
@@ -133,5 +134,11 @@ public class Iteration {
                 .mapToInt(name -> name.length())
                 .sum();
         System.out.println("Total characters in Array "+total);
+    }
+    
+    public void longest(){
+        final Optional<String> longest = friends.stream()
+                .reduce((name1,name2) -> name1.length()>= name2.length()?name1:name2);
+        longest.ifPresent(name -> System.out.println("longest name is "+name));
     }
 }

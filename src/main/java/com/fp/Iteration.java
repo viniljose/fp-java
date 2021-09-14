@@ -33,6 +33,7 @@ public class Iteration {
         iteration.closuresSimple();
         iteration.pickUpName("R");
         iteration.pickUpName("P");
+        iteration.totalChars();
     }
 
     //Old Way
@@ -125,5 +126,12 @@ public class Iteration {
                                                 .filter(name -> name.startsWith(startingLetter))
                                                 .findFirst();
         System.out.println("---->"+found.orElse("No name found"));
+    }
+    
+    public void totalChars(){
+        long total = friends.stream()
+                .mapToInt(name -> name.length())
+                .sum();
+        System.out.println("Total characters in Array "+total);
     }
 }

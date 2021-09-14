@@ -143,4 +143,10 @@ public class Iteration {
         longest.ifPresent(name -> System.out.println("longest name is "+name));
     }
     
+    public void joining(){
+        final String joined = friends.stream()
+                .map(String::toUpperCase)
+                .collect(Collectors.joining(", "));
+        System.out.println(joined);
+    }
 }

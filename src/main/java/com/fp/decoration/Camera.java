@@ -27,8 +27,15 @@ public class Camera {
     public static void main(String[] args) {
         final Camera camera = new Camera();
         final Consumer<String> printCaptured = (filterInfo) ->
-  System.out.println(String.format("With %s: %s", filterInfo,
-                camera.capture(new Color(200, 100, 200))));
+                System.out.println(String.format("With %s: %s", filterInfo,
+                        camera.capture(new Color(200, 100, 200))));
         printCaptured.accept("No Filter");
+
+        camera.setFilters(Color::brighter);
+        printCaptured.accept("Brighter Filter");
+
+        camera.setFilters(Color::brighter,Color::darker);
+        printCaptured.accept("Multiple Filters");
+
     }
 }

@@ -23,6 +23,9 @@ public class CalculateNAV {
     public static void main(String[] args) {
         CalculateNAV calculateNAV = new CalculateNAV(ticker -> new BigDecimal("6.01"));
         System.out.println(calculateNAV.computeStockWorth("ABCD",1000));
+        
+        CalculateNAV calculateNAV1 = new CalculateNAV(YahooFinance::getPrice);
+        System.out.println("100 shares of google "+calculateNAV1.computeStockWorth("GOOG",100));   
     }
 
 }

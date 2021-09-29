@@ -30,4 +30,9 @@ public class Holder {
 
         return heavySupplier.get();
     }
+    
+    public static void main(String[] args) {
+        Holder holder = new Holder();
+        System.out.println("---->"+holder.getHeavy());
+    }
 }
